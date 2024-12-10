@@ -1,4 +1,4 @@
-#include "A2_19_20231085_Game 1.h"
+#include "Pyramic Tic-Tac-Toe.h"
 
 int main() {
     srand(static_cast<unsigned int>(time(0))); // Initialize random seed
