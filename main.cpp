@@ -21,7 +21,7 @@ int main() {
         showMenu();
         cin >> choice;
 
-        if (choice == 3) {
+        if (choice == 4) {
             cout << "Thank you for playing!\n";
             break;
         }
