@@ -121,6 +121,9 @@ bool Misere_Board<T>::is_draw() {
 
 template <typename T>
 bool Misere_Board<T>::game_is_over() {
+    if(this->n_moves % 2 == 0){
+        return false ;
+    }
     return is_win() || is_draw();  // Game is over if there's a loss or a draw
 }
 
