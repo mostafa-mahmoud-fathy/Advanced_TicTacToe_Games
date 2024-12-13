@@ -168,7 +168,7 @@ void UltimateBoard<T>::display_board() {
 
     // Iterate through the 3 rows of the main board
     for (int mainRow = 0; mainRow < 3; ++mainRow) {
-        // Iterate through the 3 sub-rows inside each main row (representing the rows of small boards)
+        // Iterate through the 3 sub-rows inside each main row (which is the rows of small boards)
         for (int subRow = 0; subRow < 3; ++subRow) {
             cout << "| ";
 
@@ -178,18 +178,11 @@ void UltimateBoard<T>::display_board() {
 
                 // Display the state of each cell in the current sub-row of the small board
                 for (int subCol = 0; subCol < 3; ++subCol) {
-                    // Access the value of the cell (either 'X', 'O', or ' ')
                     char cellValue = smallBoards[smallBoardIndex]->get_grid(subRow, subCol);
 
                     // Display the cell's row, column, and the current symbol (move)
                     cout << "(" << mainRow * 3 + subRow << "," << mainCol * 3 + subCol << ") ";
-
-                    // Display the current symbol (X or O) or space if the cell is empty
-                    if (cellValue != ' ') {
-                        cout << cellValue; // Show the symbol if present
-                    } else {
-                        cout << " "; // Show empty space if no symbol is placed yet
-                    }
+                    cout << cellValue; // Show the symbol if present
 
                     if (subCol < 2) {
                         cout << " | "; // Add separator between columns of the small board
