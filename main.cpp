@@ -4,7 +4,8 @@
 #include "Ultimate_Tic_Tac_Toe.h"
 #include "Pyramid Tic-Tac-Toe.h"
 #include "Word Tic-Tac-Toe.h"
-
+#include "FourInARowGame.h"
+#include "NumericTicTacToe.h"
 using namespace std;
 
 void showMenu() {
@@ -16,7 +17,9 @@ void showMenu() {
     cout << "4. Play Ultimate Tic Tac Toe\n";
     cout << "5. Play Pyramid Tic Tac Toe\n";
     cout << "6. Play Word Tic Tac Toe\n";
-    cout << "7. Exit\n";
+    cout << "7. play Four In A Row\n";
+    cout << "8. Play Numeric Tic Tac Toe\n";
+    cout << "9. Exit\n";
     cout << "Your choice: ";
 }
 
@@ -163,6 +166,14 @@ int main() {
                     }
                 }
                 break;
+            }
+            case 7:{
+                cout << "Four In A Row selected.\n";
+                FourInARowGame();
+            }
+            case 8:{
+                cout << "Numeric Tic Tac Toe selected.\n";
+                Numerical_Tic_Tac_Toe();
             }
             default:
                 cout << "Invalid choice, please try again.\n";
