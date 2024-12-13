@@ -30,27 +30,27 @@ int main() {
         showMenu();
         cin >> choice;
 
-        if (choice == 7) {
+        if (choice == 9) {
             cout << "Thank you for playing!\n";
             break;
         }
 
         // Declare pointers for the board and player array
-        Board<char>* board;
+        Board<char> *board = nullptr;
         Player<char>* players[2];
-
-        cout << "Select game mode:\n";
-        cout << "1. Player vs Player\n";
-        cout << "2. Player vs Computer\n";
-        cout << "Your choice: ";
         int mode;
-        cin >> mode;
+        if(choice != 7 && choice != 8){
+            cout << "Select game mode:\n";
+            cout << "1. Player vs Player\n";
+            cout << "2. Player vs Computer\n";
+            cout << "Your choice: ";
+            cin >> mode;
 
-        if (mode != 1 && mode != 2) {
-            cout << "Invalid game mode, returning to main menu.\n";
-            continue;
+            if (mode != 1 && mode != 2) {
+                cout << "Invalid game mode, returning to main menu.\n";
+                continue;
+            }
         }
-
         switch (choice) {
             case 1: { // 4x4 Game
                 cout << "4x4 Tic Tac Toe selected.\n";
@@ -63,10 +63,10 @@ int main() {
                         cout << "Computer player will be used.\n";
                         players[i] = new Random_Player4X4<char>('O');
                     } else {
-                        cout << "Enter name or type 'Random' for a computer player: ";
+                        cout << "Enter the name of player: ";
                         string name;
                         cin >> name;
-                            players[i] = new Player4X4<char>(name, i == 0 ? 'X' : 'O');
+                        players[i] = new Player4X4<char>(name, i == 0 ? 'X' : 'O');
                     }
                 }
                 break;
@@ -82,10 +82,10 @@ int main() {
                         cout << "Computer player will be used.\n";
                         players[i] = new Random_Player5x5<char>('O');
                     } else {
-                        cout << "Enter name or type 'Random' for a computer player: ";
+                        cout << "Enter the name of player: ";
                         string name;
                         cin >> name;
-                            players[i] = new Player5x5<char>(name, i == 0 ? 'X' : 'O');
+                        players[i] = new Player5x5<char>(name, i == 0 ? 'X' : 'O');
                     }
                 }
                 break;
@@ -101,10 +101,10 @@ int main() {
                         cout << "Computer player will be used.\n";
                         players[i] = new Misere_Random_Player<char>( 'O');
                     } else {
-                        cout << "Enter name or type 'Random' for a computer player: ";
+                        cout << "Enter the name of player: ";
                         string name;
                         cin >> name;
-                            players[i] = new Misere_Player<char>(name, i == 0 ? 'X' : 'O');
+                        players[i] = new Misere_Player<char>(name, i == 0 ? 'X' : 'O');
                     }
                 }
                 break;
@@ -120,10 +120,10 @@ int main() {
                         cout << "Computer player will be used.\n";
                         players[i] = new Ultimate_Random_Player<char>('O');
                     } else {
-                        cout << "Enter name or type 'Random' for a computer player: ";
+                        cout << "Enter the name of player: ";
                         string name;
                         cin >> name;
-                            players[i] = new Ultimate_Player<char>(name, i == 0 ? 'X' : 'O');
+                        players[i] = new Ultimate_Player<char>(name, i == 0 ? 'X' : 'O');
 
                     }
                 }
@@ -140,10 +140,10 @@ int main() {
                         cout << "Computer player will be used.\n";
                         players[i] = new RandomPyramidPlayer<char>('O');
                     } else {
-                        cout << "Enter name or type 'Random' for a computer player: ";
+                        cout << "Enter the name of player: ";
                         string name;
                         cin >> name;
-                            players[i] = new PyramidPlayer<char>(name, i == 0 ? 'X' : 'O');
+                        players[i] = new PyramidPlayer<char>(name, i == 0 ? 'X' : 'O');
                     }
                 }
                 break;
@@ -159,7 +159,7 @@ int main() {
                         cout << "Computer player will be used.\n";
                         players[i] = new WordRandomPlayer('O');
                     } else {
-                        cout << "Enter name or type 'Random' for a computer player: ";
+                        cout << "Enter the name of player: ";
                         string name;
                         cin >> name;
                         players[i] = new WordPlayer(name, i == 0 ? 'X' : 'O');
@@ -170,10 +170,12 @@ int main() {
             case 7:{
                 cout << "Four In A Row selected.\n";
                 FourInARowGame();
+                break;
             }
             case 8:{
                 cout << "Numeric Tic Tac Toe selected.\n";
                 Numerical_Tic_Tac_Toe();
+                break;
             }
             default:
                 cout << "Invalid choice, please try again.\n";
@@ -181,9 +183,11 @@ int main() {
         }
 
         // Use the GameManager to run the game
-        GameManager<char> manager(board, players);
-        manager.run();
-
+        if(choice != 7 && choice != 8){
+            GameManager<char> manager(board, players);
+            manager.run();
+        }
+        
         // Clean up memory
         delete board;
         delete players[0];
