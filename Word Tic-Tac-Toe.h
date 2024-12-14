@@ -135,8 +135,10 @@ WordPlayer::WordPlayer(char symbol) : Player(symbol) {
 
 void WordPlayer::getmove(int& x, int& y) {
     do {
-        cout << this->getname() << ", enter the letter you want to place:\n";
-        cin >> symbol;
+        do{
+            cout << this->getname() << ", enter the letter you want to place:\n";
+            cin >> symbol;
+        } while (!isalpha(symbol));
         symbol = toupper(symbol);
         cout << "Enter row :\n";
         cin >> x;
@@ -150,10 +152,8 @@ WordRandomPlayer::WordRandomPlayer(char symbol) : RandomPlayer(symbol) {}
 void WordRandomPlayer::getmove(int& x, int& y) {
     char randomLetter = 'A' + rand() % 26;
     symbol = randomLetter;
-    cout << "Random player symbol: " << symbol << endl;
     x = rand() % 3;
     y = rand() % 3;
-    cout << "computer player chooses: " << x << ", " << y << endl;
 }
 
 #endif // WORDTICTACTOE_H

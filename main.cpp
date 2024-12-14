@@ -20,7 +20,7 @@ void showMenu() {
     cout << "7. play Four In A Row\n";
     cout << "8. Play Numeric Tic Tac Toe\n";
     cout << "9. Exit\n";
-    cout << "Your choice: ";
+    cout << "Your choice:\n";
 }
 
 int main() {
@@ -31,7 +31,7 @@ int main() {
         cin >> choice;
 
         if (choice == 9) {
-            cout << "Thank you for playing!\n";
+            cout << "Thank you for using our program!\n";
             break;
         }
 
@@ -43,7 +43,7 @@ int main() {
             cout << "Select game mode:\n";
             cout << "1. Player vs Player\n";
             cout << "2. Player vs Computer\n";
-            cout << "Your choice: ";
+            cout << "Your choice:\n";
             cin >> mode;
 
             if (mode != 1 && mode != 2) {
@@ -140,7 +140,7 @@ int main() {
                         cout << "Computer player will be used.\n";
                         players[i] = new RandomPyramidPlayer<char>('O');
                     } else {
-                        cout << "Enter the name of player: ";
+                        cout << "Enter the name of player:\n";
                         string name;
                         cin >> name;
                         players[i] = new PyramidPlayer<char>(name, i == 0 ? 'X' : 'O');
@@ -148,18 +148,17 @@ int main() {
                 }
                 break;
             }
-            case 6:{
+            case 6: {
                 cout << "Word Tic Tac Toe selected.\n";
                 board = new WordBoard();
 
                 // Player setup
                 for (int i = 0; i < 2; ++i) {
-                    cout << "Player " << (i + 1) << (i == 0 ? " (X): " : " (O): ");
                     if (mode == 2 && i == 1) {
                         cout << "Computer player will be used.\n";
                         players[i] = new WordRandomPlayer('O');
                     } else {
-                        cout << "Enter the name of player: ";
+                        cout << "Enter the name of player:\n";
                         string name;
                         cin >> name;
                         players[i] = new WordPlayer(name, i == 0 ? 'X' : 'O');
@@ -167,12 +166,12 @@ int main() {
                 }
                 break;
             }
-            case 7:{
+            case 7: {
                 cout << "Four In A Row selected.\n";
                 FourInARowGame();
                 break;
             }
-            case 8:{
+            case 8: {
                 cout << "Numeric Tic Tac Toe selected.\n";
                 Numerical_Tic_Tac_Toe();
                 break;
