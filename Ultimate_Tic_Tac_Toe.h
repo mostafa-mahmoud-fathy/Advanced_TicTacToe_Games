@@ -216,10 +216,16 @@ bool UltimateBoard<T>::is_win() {
 // Checks if the UltimateBoard is a draw
 template <typename T>
 bool UltimateBoard<T>::is_draw() {
-    for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-            if (mainBoard[i][j] == ' ') return false;
-    return true;
+    for (int i = 0; i < 3; ++i) {
+    for (int j = 0; j < 3; ++j) {
+        // Check if any main board cell corresponds to an incomplete small board
+        int smallBoardIndex = i * 3 + j;
+        if (mainBoard[i][j] == ' ' && !smallBoards[smallBoardIndex]->game_is_over()) {
+            return false;
+        }
+    }
+}
+return !is_win();
 }
 
 // Checks if the game is over
